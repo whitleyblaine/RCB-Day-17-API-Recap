@@ -19,9 +19,21 @@
  * Create an AJAX call to retrieve data
  * Log the data in console
  * Log the data in HTML
- * Scream Ushindi (Victory in Swahili)! At the top of your lungs.	
+ * Scream Ushindi (Victory in Swahili)! At the top of your lungs.x
 */
 
+var cityID = "425378";
+var key = "fb5f8e35c7d2ffd713353456791078e5";
+var queryURL = "http://api.openweathermap.org/data/2.5/weather?id=" + cityID + "&APPID=" + key;
+
+$.ajax({url: queryURL, method: 'GET'})
+.done(function(response) {
+  console.log(response);
+  $('.city').html("City: " + response.name);
+  $('.wind').html("Wind speed: " + response.wind.speed + " mph");
+  $('.humidity').html("Humidity: " + response.main.humidity + "%");
+  $('.temp').html("Temperature: " + response.main.temp + " k");
+});
 
 
 
